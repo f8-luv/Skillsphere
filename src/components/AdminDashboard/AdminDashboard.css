@@ -1,0 +1,478 @@
+.admin-dashboard {
+    font-family: Arial, sans-serif;
+    background-color: #003050;
+    color: #fff;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .top-navbar {
+    display: sticky;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #003050;
+    padding: 10px 25px;
+    position: relative;
+    height: 70px;
+    
+  }
+  
+  .logo-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 50px;
+    margin-right: 8px;
+  }
+  
+  .search-section {
+    display: flex;
+    align-items: right;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 890px; 
+  }
+  
+  .search-icon {
+    height: 16px;
+    margin-right: 5px;
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background-color: transparent;
+    color: #000;
+  }
+  
+  .icons-section {
+    display: flex; 
+    align-items: center;
+    gap: 5px; 
+    margin-left: auto; 
+}
+
+  
+  .icon {
+    height: 24px;
+    width: 24px;
+    margin-left: 15px;
+    border-radius: 50%;
+  }
+  
+  .profile-pic {
+    height: 35px;
+    width: 35px;
+    margin-left: 15px;
+    margin-right: 20px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+  
+  .dashboard-nav {
+    background-color: #3c8dbc91;
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    position: sticky;
+    top: 70px;
+    z-index: 1; 
+  }
+  
+  .dashboard-nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dashboard-nav li {
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+    outline: none;
+    align-items: left;
+  }
+  
+  .dashboard-nav li:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    align-items: right;
+    
+  }
+  
+  .dashboard-nav .active {
+    color: #002b45;
+  }
+  .nav-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Job Cards */
+.dashboard-main {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px;
+  background-color: #003050;
+  height: calc(100vh - 120px); 
+  font-family: Arial, sans-serif;
+  color: black;
+  }
+  
+.card {
+  position: relative;
+  background-color: #cfd8dc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+  .card h2 {
+    margin-top: -20px; 
+    margin-left: -10px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .card p {
+    margin-top: 8px; 
+    font-size: 14px;
+    color: #080808;
+    margin-left: -50px;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table-header,
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 8px 0;
+    margin-left: 50px;
+    gap: 100px;
+  }
+  
+  .table-header {
+    font-weight: bold;
+    gap: 330px;
+    margin-left: 40px;
+  }
+  .table-row span {
+    display: flex;
+    align-items: left;
+  }
+  
+  .table-row a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 40px;
+  }
+  
+  .view-link {
+    position: absolute; 
+    bottom: 15px; 
+    right: 15px; 
+    color: #007bff;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: right;
+  }
+  
+/* Tasklist */
+
+.usercards-container {
+  background-color: #003050;
+  padding: 40px;
+  height: calc(100vh - 120px);    
+  font-family: Arial, sans-serif;
+}
+
+.user-card {
+  background-color: #cfd8dc;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  margin-right: 16px;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-info h3 {
+  margin: 0;
+  color: #072F5F;
+}
+
+.user-info p {
+  margin: 8px 0;
+  color: #080808;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.tags span {
+  background-color: #f1f1f1;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.chat-button {
+  background-color: #002840;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.view-more {
+  color: limegreen;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+  
+  /*messages*/
+
+  .messages-wrapper {
+    display: flex;
+    height: calc(100vh - 120px);    
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .sidebar {
+    width: 280px;
+    background-color: #1E3F66;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px); 
+    overflow-y: auto; 
+  }
+  .search-bar {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    outline: none;
+  }
+  
+  .chats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 7px;
+  }
+  
+  .chats-title {
+    font-weight: bold;
+  }
+  
+  .chats-request {
+    color: #73A5C6;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .no-messages {
+    font-size: 13px;
+    color: #ccc;
+  }
+  
+  .message-welcome {
+    flex: 1;
+    background-color: #003050;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .message-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+  
+  .message-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  
+  .message-welcome h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .message-welcome p {
+    font-size: 14px;
+  }
+  
+  .link-blue {
+    color: #00cc44;
+    cursor: pointer;
+  }
+  
+  .link-green {
+    color: #00cc44;
+    cursor: pointer;
+  }
+  .search-wrapper {
+    position: relative;
+    margin-bottom: -10px;
+  }
+  .srch-icon {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .search-bar {
+    padding: 8px 12px 8px 34px; 
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+  }
+
+  /*notifications*/
+.notification-dropdown {
+  position: absolute;
+  top: 60px; 
+  right: 80px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 230px;
+  height: 300px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+  z-index: 1000; 
+}
+  
+  .notifications-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color:#000;
+    margin-top: 2px;
+  }
+  
+  .no-notifications {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+  }
+
+  /*profile menu*/
+
+  .profile-menu {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 220px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+  
+  .profile-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color:#000;
+  }
+  
+  .profile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    align-items: flex-start; 
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+  }
+  
+  .profile-item {
+    display: flex;
+    align-items: center; 
+    gap: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+  }
+  
+  
+  .profile-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 8px;
+  }
+  
+  .profile-menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+  

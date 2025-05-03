@@ -1,0 +1,257 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, Routes, Route } from 'react-router-dom';
+import './JobDashboard.css';
+import Skillspherelogo from '../../assets/skillspherelogo.png';
+import ProfilePic from '../../assets/user.png';
+import NotificationIcon from '../../assets/notification.png';
+import SearchIcon from '../../assets/search.png';
+import editIcon from '../../assets/edit.png';
+import deleteIcon from '../../assets/delete.png';
+import taskIcon from '../../assets/task.png';
+import assign from '../../assets/assign.png';
+import chat from '../../assets/chat.png';
+import profileIcon from '../../assets/profileIcon.png'; 
+import subscriptionIcon from '../../assets/subscriptionIcon.png';
+import logoutIcon from '../../assets/logoutIcon.png';
+import ProfilePage from '../../components/ProfilePage/ProfilePage';
+import SubscriptionPage from '../../components/SubscriptionPage/SubscriptionPage'; // << ADDED THIS
+
+const JobDashboard = () => {
+  const [view, setView] = useState('dashboard');
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const notificationRef = useRef(null);
+  const profileMenuRef = useRef(null);
+  const navigate = useNavigate();
+
+  const jobs = [
+    {
+      title: "Content Writer",
+      salary: "$400 per month",
+      description: "Looking for a talented content writer to create engaging articles and blog posts. SEO knowledge is a plus."
+    },
+    {
+      title: "Graphic Designer",
+      salary: "$600 per month",
+      description: "Seeking a creative graphic designer with experience in Adobe Suite. Must have a strong portfolio."
+    }
+  ];
+
+  const notifications = [];
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false);
+      }
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+        setShowProfileMenu(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleProfileClick = () => {
+    navigate('/profile');
+  };
+
+  const handleSubscriptionClick = () => {
+    navigate('/subscription');
+  };
+
+  const handleLogoutClick = () => {
+    navigate('/');
+  };
+
+  const handleLogoClick = () => {
+    navigate('/job-dashboard');
+  };
+
+  const renderDashboardView = () => (
+    <main className="dashboard-main">
+      {jobs.map((job, index) => (
+        <div className="job-card" key={index}>
+          <div className="job-header">
+            <h3>{job.title}</h3>
+            <span className="salary">{job.salary}</span>
+          </div>
+          <p className="description">{job.description}</p>
+          <div className="card-buttons">
+            <button className="chat-btn">Chat</button>
+            <button className="apply-btn">Apply</button>
+          </div>
+        </div>
+      ))}
+      <div className="view-more-container">
+        <button className="view-more-btn">View more</button>
+      </div>
+    </main>
+  );
+
+  const renderTasklistView = () => (
+    <div className="tasklist-container">
+      <div className="tasklist-sidebar">
+        <h2>Tasklist</h2>
+        <button className="add-task-btn">+</button>
+      </div>
+      <div className="tasklist-main">
+        <div className="tasklist-header">
+          <button title="Edit"><img src={editIcon} alt="Edit" className="icon" /></button>
+          <button title="Assign"><img src={assign} alt="Assign Users" className="icon" /></button>
+          <button title="Delete"><img src={deleteIcon} alt="Delete" className="icon" /></button>
+        </div>
+        <div className="tasklist-content">
+          <div className="no-tasks-message">
+            <div className="task-icon">
+              <img src={taskIcon} alt="Task Icon" />
+            </div>
+            <p className="no-tasks-text">No task yet</p>
+            <p className="no-tasks-description">Create and assign people to keep on track</p>
+            <button className="create-task-button">Create task</button>
+          </div>
+        </div>
+        <div className="sidebar-line right-line"></div>
+      </div>
+    </div>
+  );
+
+  const renderProjectsView = () => (
+    <div className="projects-container">
+      <h2 className="projects-title">Projects</h2>
+      <div className="projects-card">
+        <h3 className="projects-card-title">Find new Job</h3>
+        <p className="projects-card-description">
+          Millions of talented freelancers are ready to <br />
+          help you do amazing things.
+        </p>
+      </div>
+      <button className="projects-button">Find a Job</button>
+    </div>
+  );
+
+  const renderMessagesView = () => (
+    <div className="messages-wrapper">
+      <div className="sidebar">
+        <div className="chats-header">
+          <span className="chats-title">Chats</span>
+        </div>
+        <div className="search-wrapper">
+          <img src={SearchIcon} alt="Search Icon" className="srch-icon" />
+          <input type="text" placeholder="Search" className="search-bar" />
+        </div>
+        <div className="chats-request">Request</div>
+        <p className="no-messages">No messages yet.</p>
+      </div>
+      <div className="message-welcome">
+        <div className="message-icon">
+          <img src={chat} alt="Chat Icon" />
+        </div>
+        <h2>Welcome to your messages</h2>
+        <p>
+          Start connecting with others by{' '}
+          <span className="link-blue">browsing</span> or{' '}
+          <span className="link-green">posting a project</span>.
+        </p>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="job-dashboard">
+      <nav className="top-navbar">
+        <div className="logo-section">
+          <img src={Skillspherelogo} alt="SkillSphere logo" className="logo-img" onClick={handleLogoClick}/>
+        </div>
+        <div className="search-section">
+          <img src={SearchIcon} alt="Search" className="search-icon" />
+          <input type="text" placeholder="Search.." className="search-input" />
+        </div>
+        <div className="icons-section">
+          <div ref={notificationRef}>
+            <img
+              src={NotificationIcon}
+              alt="Notifications"
+              className="icon"
+              onClick={() => setShowNotifications(!showNotifications)}
+            />
+            {showNotifications && (
+              <div className="notification-dropdown">
+                <h2 className="notifications-title">Notifications</h2>
+                {notifications.length === 0 ? (
+                  <div className="no-notifications">No notifications yet.</div>
+                ) : (
+                  notifications.map((notification, index) => (
+                    <div key={index} className="notification-item">
+                      {notification}
+                    </div>
+                  ))
+                )}
+              </div>
+            )}
+          </div>
+
+          <div ref={profileMenuRef}>
+            <img
+              src={ProfilePic}
+              alt="User Profile"
+              className="profile-pic"
+              onClick={() => setShowProfileMenu(!showProfileMenu)}
+            />
+           {showProfileMenu && (
+              <div className="profile-menu">
+                <h3 className="profile-title">My Profile</h3>
+                <ul className="profile-list">
+                  <li className="profile-item" onClick={handleProfileClick}>
+                    <img src={profileIcon} alt="View Profile" className="profile-menu-icon" />
+                    <span>View Profile</span>
+                  </li>
+                  <li className="profile-item" onClick={handleSubscriptionClick}>
+                    <img src={subscriptionIcon} alt="Subscription" className="profile-menu-icon" />
+                    <span>Subscription</span>
+                  </li>
+                  <li className="profile-item" onClick={handleLogoutClick}>
+                    <img src={logoutIcon} alt="Log out" className="profile-menu-icon" />
+                    <span>Log out</span>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      <nav className="dashboard-nav">
+        <ul className="nav-list">
+          <li className={`nav-item ${view === 'dashboard' ? 'active' : ''}`} onClick={() => setView('dashboard')}>
+            Dashboard
+          </li>
+          <li className={`nav-item ${view === 'tasklist' ? 'active' : ''}`} onClick={() => setView('tasklist')}>
+            Tasklists
+          </li>
+          <li className={`nav-item ${view === 'projects' ? 'active' : ''}`} onClick={() => setView('projects')}>
+            My Project
+          </li>
+          <li className={`nav-item ${view === 'messages' ? 'active' : ''}`} onClick={() => setView('messages')}>
+            Messages
+          </li>
+        </ul>
+      </nav>
+
+      {view === 'dashboard' && renderDashboardView()}
+      {view === 'tasklist' && renderTasklistView()}
+      {view === 'projects' && renderProjectsView()}
+      {view === 'messages' && renderMessagesView()}
+
+      <Routes>
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/subscription" element={<SubscriptionPage />} /> {/* NEW */}
+      </Routes>
+
+    </div>
+  );
+};
+
+export default JobDashboard;

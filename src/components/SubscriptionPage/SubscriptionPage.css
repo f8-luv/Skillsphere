@@ -1,0 +1,225 @@
+/* SubscriptionPlans.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .subscription-page {
+    background-color: #073b61;
+    height: 100vh;
+    color: white;
+  }
+  
+  .tp-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #003050;
+    padding: 10px 25px;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .logo-sec {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logos-img {
+    height: 50px;
+  }
+  
+  .searchsection {
+    display: flex;
+    align-items: right;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 900px;
+  }
+  
+  .searchicon {
+    height: 16px;
+    margin-right: 5px;
+  }
+  
+  .searchinput {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background-color: transparent;
+    color: #000;
+  }
+  
+  .subscription-section {
+    padding: 20px;
+  }
+  
+  .subscription-section h2 {
+    margin-bottom: 40px;
+  }
+  
+  .plans {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .plan-card {
+    top: 200px;
+    background-color: #d3e3eb;
+    color: black;
+    width: 350px;
+    padding: 80px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .plan-card h3 {
+    margin-top: -50px;
+    margin-bottom: 0px;
+    color: #003050;
+    font-size: 22px;
+  }
+  
+  .price {
+    font-weight: bold;
+    margin-bottom: 60px;
+    color:#808080
+  }
+  
+  .plan-card button {
+    background-color: #073b61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 150px;
+  }
+  
+  .plan-card button:hover {
+    background-color: #05507c;
+  }
+/*g-cash payment*/
+
+.gcash-payment-wrapper {
+    background-color: #073b61;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);    
+  }
+  
+  .gcash-payment-card {
+    background-color: #d3d8dc;
+    padding: 5rem;
+    border-radius: 12px;
+    width: 1000px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .plan-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #003049;
+    margin-bottom: 10px;
+  }
+  
+  .payment-method-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003049;
+    margin-bottom: 20px;
+    top: 10%;
+  }
+  
+  .input-label {
+    display: block;
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .gcash-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .pay-button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .pay-button {
+    background-color: #002244;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pay-button:hover {
+    background-color: #001122;
+  }
+  
+  /*payment success*/
+  .payment-success-wrapper {
+    background-color: #073b61;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .payment-success-card {
+    background-color: #d3d8dc;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-success-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #003049;
+    margin-bottom: 1rem;
+  }
+  
+  .payment-success-message {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  
+  .go-home-button {
+    background-color: #4b9dad;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .go-home-button:hover {
+    background-color: #3b8c9c;
+  }
+  

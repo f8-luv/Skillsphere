@@ -1,0 +1,246 @@
+.profile-page {
+    background: #c6dfea;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .tp-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #003050;
+    padding: 10px 25px;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .logo-sec {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logos-img {
+    height: 50px;
+  }
+  
+  .searchsection {
+    display: flex;
+    align-items: right;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 900px;
+  }
+  
+  .searchicon {
+    height: 16px;
+    margin-right: 5px;
+  }
+  
+  .searchinput {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background-color: transparent;
+    color: #000;
+  }
+  
+  /* COVER PHOTO */
+  .profile-header {
+    position: relative;
+    background-color: #0b3a59;
+    height: 250px; 
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; 
+  }
+  
+  
+  .cover-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .add-cover-photo {
+    width: 100%;
+    height: 100%;
+    background-color: #b4b4b4b2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .upload-button {
+    position: absolute;
+    background: #909090;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* PROFILE PICTURE */
+  .profile-info {
+    position: absolute;
+    bottom: -60px; 
+    left: 40px;
+    z-index: 10; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .profile-picture {
+    width: 130px;
+    height: 130px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+  }
+  
+  .profile-picture:hover {
+    opacity: 0.8;
+  }
+  
+  .add-profile-photo-text {
+    position: absolute;
+    top: 45%;
+    left: 50%; 
+    transform: translate(-50%, -50%) translateY(30%); 
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 0 0 0 0%; 
+    z-index: 2; 
+    width: 75%;
+    height: 35%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: -10px; 
+    margin-bottom: 40px;
+  }
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: -10px; 
+    margin-bottom: 40px;
+  }
+  .project-card {
+    background-color: #d9e3ec;
+    border-radius: 10px;
+    padding: 25px;
+    width: 1000px;
+    position: relative;
+    margin: 0 auto; 
+  }
+  
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .project-role {
+    font-weight: bold;
+    color: #004080;
+  }
+   
+  .project-price {
+    font-weight: bold;
+    color: #004080;
+    text-align: right; 
+    margin-left: auto;
+    top: 0;
+  }
+  
+  .project-prce {
+    font-weight: bold;
+    color: #004080;
+    text-align: right; /* Aligns the price to the right */
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+
+  .project-description {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #000;
+  }
+  .projct-description {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #000;
+  }
+
+  .divider {
+    height: 2px;
+    background-color: #333;
+    margin: 10px 0;
+  }
+
+  .dlete-button {
+    background-color: #002b4d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 15px;
+    font-size: 14px;
+    float: right;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  .delete-button {
+    background-color: #002b4d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 15px;
+    font-size: 14px;
+    float: right;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+  
+  .delete-button.bottom {
+    clear: both;
+    margin-top: 10px;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: -10px; 
+    margin-bottom: 40px;
+  }

@@ -1,0 +1,336 @@
+/* === Base Layout === */
+.login-container,
+.sent-container,
+.reset-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: #003050;
+  position: relative;
+}
+
+/* === Shared Back Arrow === */
+.back-arrow,
+.back-arrow-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.back-arrow:hover,
+.back-arrow-button:hover {
+  opacity: 0.7;
+}
+
+/* === Image Section (used across views) === */
+.login-image,
+.imagesection,
+.image-section,
+.image-box {
+  flex: 0.7;
+  background-image: url('../../assets/Hands.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hands-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* === Inputs & Buttons === */
+.inputs {
+  background-color: #BCD2E8; /* Updated background color */
+}
+
+.form-box input,
+.email-inputs,
+.email-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #BCD2E8;
+}
+
+.inputs:focus,
+.email-input:focus,
+.form-box input:focus {
+  outline: none;
+  border: 1px solid #5B9BBD;
+  box-shadow: 0 0 0 3px rgba(91, 155, 189, 0.3);
+}
+
+.login-button,
+.next-btn,
+.next-button,
+.confirm-button,
+.success-message button {
+  width: 70%;
+  padding: 0.75rem;
+  background-color: #5B9BBD;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1.5rem;
+  max-width: 190px;
+  height: 50px;
+}
+
+.login-button:hover,
+.next-btn:hover,
+.next-button:hover,
+.confirm-button:hover,
+.success-message button:hover {
+  background-color: #4A8AAD;
+}
+
+.error-message {
+  color: #ff3333;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.success-message {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .login-container,
+  .sent-container,
+  .reset-container {
+    flex-direction: column;
+  }
+
+  .login-image,
+  .imagesection,
+  .image-section,
+  .image-box {
+    display: none;
+  }
+
+  .form-box,
+  .email-form-box,
+  .sent-form-section {
+    width: 100%;
+  }
+}
+
+/* === Login Form Specific === */
+.form-box {
+  flex: 1;
+  background-color: #003050;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-box h1 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-right: 5rem;
+}
+
+/* === Login Form Specific === */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  max-width: 400px;
+  flex-wrap: nowrap;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap; /* 👈 prevents line break */
+}
+.remember-me input[type="checkbox"] {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.forgot-password {
+  color: #4CAF50;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login-button {
+  margin-top: 1.5rem;
+  max-width: 190px;
+  height: 50px;
+  margin-left: 6.5rem;
+}
+/* === Email Reset View === */
+.email-form-box {
+  flex: 1;
+  background-color: #003050;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.email-form-box h2 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.email-form-box p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 370px;
+}
+
+/* === Password Sent View === */
+.sent-form-section {
+  flex: 1;
+  background-color: #003050;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.sent-header {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sent-message {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 370px;
+}
+
+.email-input-container {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 1rem;
+}
+
+.email-input {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.resend-link-container {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  margin-top: -3.5rem;
+  margin-left: 3rem;
+  
+}
+
+.resend-link {
+  color: #4CAF50;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+}
+
+/* === Password Reset View === */
+.reset-container .form-box {
+  background-color: #003050;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+.form-box h2 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.reset-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.input-group input {
+  width: 87%;
+}
+
+.password-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.1rem;
+}
