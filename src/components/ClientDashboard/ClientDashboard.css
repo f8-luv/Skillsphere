@@ -131,11 +131,11 @@
     height: calc(100vh - 120px);    
   }
   
-  .card {
+  .cards {
     background: #d9e3ea;
     border-radius: 10px;
     display: flex;
-    padding: 2.5rem;
+    padding: 1.5rem;
     margin-bottom: 1rem;
     width: 170%;
     max-width: 1100px;
@@ -253,7 +253,7 @@
     padding-top: 60px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #003b57;
+    background-color: #003050;
     box-sizing: border-box;
   }
   
@@ -262,15 +262,15 @@
     top: 9px;
     left: 0;
     right: 0;
-    gap: 20px;
+    gap: 30px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 0 20px;
     border-bottom: 1px solid white;
-    background-color: #003b57;
-    z-index: 10;
+    background-color: #003050;
+    z-index: 1;
   }
   
   .icon-btn {

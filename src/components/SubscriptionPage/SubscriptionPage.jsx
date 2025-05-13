@@ -47,7 +47,7 @@ const SubscriptionPage = () => {
   };
 
   const handleLogoClick = () => {
-    navigate('/job-dashboard'); // Navigate to the job dashboard
+    navigate('/job-dashboard');
   };
 
   const handlePayClick = (plan) => {
@@ -125,7 +125,6 @@ const SubscriptionPage = () => {
         </div>
       </nav>
 
-      {/* Conditionally render Payment Success message if showPaymentSuccess is true */}
       {showPaymentSuccess ? (
         <div className="payment-success-wrapper">
           <div className="payment-success-card">

@@ -6,11 +6,10 @@ import ProfilePic from '../../assets/user.png';
 import NotificationIcon from '../../assets/notification.png';
 import SearchIcon from '../../assets/search.png';
 import profileIcon from '../../assets/profileIcon.png';
-import subscriptionIcon from '../../assets/subscriptionIcon.png';
 import logoutIcon from '../../assets/logoutIcon.png';
 import ProfilePage from '../../components/ProfilePage/ProfilePage';
-import SubscriptionPage from '../../components/SubscriptionPage/SubscriptionPage';
 import contact from '../../assets/contact.png';
+import chat from '../../assets/chat.png'; 
 
 const AdminDashboard = () => {
   const [view, setView] = useState('dashboard');
@@ -37,12 +36,21 @@ const AdminDashboard = () => {
     };
   }, []);
 
+  const jobs = [
+    {
+      title: 'Content Writer',
+      price: '$400 per month',
+      description: 'Looking for a talented content writer to create engaging articles and blog posts. SEO knowledge is a plus.',
+    },
+    {
+      title: 'Graphic Designer',
+      price: '$600 per month',
+      description: 'Seeking a creative graphic designer with experience in Adobe Suite. Must have a strong portfolio.',
+    },
+  ];
+
   const handleProfileClick = () => {
     navigate('/profile');
-  };
-
-  const handleSubscriptionClick = () => {
-    navigate('/subscription');
   };
 
   const handleLogoutClick = () => {
@@ -56,7 +64,7 @@ const AdminDashboard = () => {
   const renderDashboardView = () => (
     <main className="dashboard-main">
       <div className="dashboard-container">
-        <div className="card">
+        <div className="cards">
           <h2>Users</h2>
           <p>Total Users: 50</p>
           <div className="table">
@@ -79,7 +87,7 @@ const AdminDashboard = () => {
           <div className="view-link">View</div>
         </div>
 
-        <div className="card">
+        <div className="cards">
           <h2>Jobs</h2>
           <p>Total Jobs: 150</p>
           <div className="table">
@@ -138,6 +146,47 @@ const AdminDashboard = () => {
     </div>
   );
 
+  const renderJobs = () => (
+    <div className="job-list-container">
+      {jobs.map((job, index) => (
+        <div className="job-card" key={index}>
+          <div className="job-header">
+            <strong className="job-title">{job.title}</strong>
+            <strong className="job-price">{job.price}</strong>
+          </div>
+          <p className="job-description">{job.description}</p>
+          <button className="delete-btton">Delete</button>
+        </div>
+      ))}
+      <p className="view-more">View more</p>
+    </div>
+  );
+
+  const renderMessagesView = () => (
+    <div className="messages-wrapper">
+      <div className="sidebar">
+        <div className="chats-header">
+          <span className="chats-title">Chats</span>
+        </div>
+        <div className="search-wrapper">
+          <img src={SearchIcon} alt="Search Icon" className="srch-icon" />
+          <input type="text" placeholder="Search" className="search-bar" />
+        </div>
+        <div className="chats-request">Request</div>
+        <p className="no-messages">No messages yet.</p>
+      </div>
+      <div className="message-welcome">
+        <div className="message-icon">
+          <img src={chat} alt="Chat Icon" />
+        </div>
+        <h2>Welcome to your messages</h2>
+        <p>
+          Start connecting with others
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <div className="admin-dashboard">
       <nav className="top-navbar">
@@ -183,14 +232,6 @@ const AdminDashboard = () => {
               <div className="profile-menu">
                 <h3 className="profile-title">My Profile</h3>
                 <ul className="profile-list">
-                  <li className="profile-item" onClick={handleProfileClick}>
-                    <img src={profileIcon} alt="View Profile" className="profile-menu-icon" />
-                    <span>View Profile</span>
-                  </li>
-                  <li className="profile-item" onClick={handleSubscriptionClick}>
-                    <img src={subscriptionIcon} alt="Subscription" className="profile-menu-icon" />
-                    <span>Subscription</span>
-                  </li>
                   <li className="profile-item" onClick={handleLogoutClick}>
                     <img src={logoutIcon} alt="Log out" className="profile-menu-icon" />
                     <span>Log out</span>
@@ -210,18 +251,22 @@ const AdminDashboard = () => {
           <li className={`nav-item ${view === 'users' ? 'active' : ''}`} onClick={() => setView('users')}>
             Users
           </li>
-          <li className={`nav-item ${view === 'projects' ? 'active' : ''}`} onClick={() => setView('projects')}>
+          <li className={`nav-item ${view === 'jobs' ? 'active' : ''}`} onClick={() => setView('jobs')}>
             Jobs
+          </li>
+          <li className={`nav-item ${view === 'message' ? 'active' : ''}`} onClick={() => setView('message')}>
+            Message
           </li>
         </ul>
       </nav>
 
       {view === 'dashboard' && renderDashboardView()}
       {view === 'users' && renderUsers()}
+      {view === 'jobs' && renderJobs()}
+      {view === 'message' && renderMessagesView()}
 
       <Routes>
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/subscription" element={<SubscriptionPage />} />
       </Routes>
     </div>
   );

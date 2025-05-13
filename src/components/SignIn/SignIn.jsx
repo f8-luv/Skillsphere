@@ -47,6 +47,7 @@ const SignIn = () => {
 
   return (
     <>
+      {/* LOGIN STEP */}
       {step === 'login' && (
         <div className="login-container">
           <img src={BackArrow} alt="Back" className="back-arrow" onClick={handleBack} />
@@ -91,6 +92,7 @@ const SignIn = () => {
         </div>
       )}
 
+      {/* EMAIL RESET STEP */}
       {step === 'emailReset' && (
         <div className="login-container">
           <img src={BackArrow} alt="Back" className="back-arrow" onClick={handleBack} />
@@ -110,6 +112,7 @@ const SignIn = () => {
         </div>
       )}
 
+      {/* PASSWORD SENT STEP */}
       {step === 'passwordSent' && (
         <div className="sent-container">
           <img src={BackArrow} alt="Back" className="back-arrow-button" onClick={handleBack} />
@@ -141,6 +144,7 @@ const SignIn = () => {
         </div>
       )}
 
+      {/* PASSWORD RESET STEP */}
       {step === 'passwordReset' && (
         <div className="reset-container">
           <img src={BackArrow} alt="Back" className="back-arrow-button" onClick={handleBack} />
@@ -152,27 +156,26 @@ const SignIn = () => {
                 <button onClick={() => setStep('login')}>Return to Login</button>
               </div>
             ) : (
-                <form onSubmit={handleSubmitReset}>
-                  <div className="input-group">
-                    <input
-                      type="password"
-                      placeholder="New Password"
-                      value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-group">
-                    <input
-                      type="password"
-                      placeholder="Confirm new password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                  </div>
-                  {resetError && <div className="error-message">{resetError}</div>}
-                  <button type="submit" className="confirm-button">Confirm</button>
-                </form>
-
+              <form onSubmit={handleSubmitReset}>
+                <div className="input-group">
+                  <input
+                    type="password"
+                    placeholder="New Password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                </div>
+                <div className="input-group">
+                  <input
+                    type="password"
+                    placeholder="Confirm new password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+                {resetError && <div className="error-message">{resetError}</div>}
+                <button type="submit" className="confirm-button">Confirm</button>
+              </form>
             )}
           </div>
           <div className="image-box" />

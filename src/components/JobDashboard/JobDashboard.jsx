@@ -14,8 +14,8 @@ import profileIcon from '../../assets/profileIcon.png';
 import subscriptionIcon from '../../assets/subscriptionIcon.png';
 import logoutIcon from '../../assets/logoutIcon.png';
 import ProfilePage from '../../components/ProfilePage/ProfilePage';
-import SubscriptionPage from '../../components/SubscriptionPage/SubscriptionPage'; // << ADDED THIS
-
+import SubscriptionPage from '../../components/SubscriptionPage/SubscriptionPage'; 
+import plus from '../../assets/plus.png';
 const JobDashboard = () => {
   const [view, setView] = useState('dashboard');
   const [showNotifications, setShowNotifications] = useState(false);
@@ -92,30 +92,27 @@ const JobDashboard = () => {
   );
 
   const renderTasklistView = () => (
-    <div className="tasklist-container">
-      <div className="tasklist-sidebar">
-        <h2>Tasklist</h2>
-        <button className="add-task-btn">+</button>
-      </div>
-      <div className="tasklist-main">
-        <div className="tasklist-header">
-          <button title="Edit"><img src={editIcon} alt="Edit" className="icon" /></button>
-          <button title="Assign"><img src={assign} alt="Assign Users" className="icon" /></button>
-          <button title="Delete"><img src={deleteIcon} alt="Delete" className="icon" /></button>
-        </div>
-        <div className="tasklist-content">
-          <div className="no-tasks-message">
-            <div className="task-icon">
-              <img src={taskIcon} alt="Task Icon" />
-            </div>
-            <p className="no-tasks-text">No task yet</p>
-            <p className="no-tasks-description">Create and assign people to keep on track</p>
-            <button className="create-task-button">Create task</button>
+      <div className="task-container">
+        <div className="sidebar">
+          <div className="sidebar-header">
+            <span className="sidebar-title">Tasklist</span>
+            <img src={plus} alt="Add" className="icon-btn" />
           </div>
         </div>
-        <div className="sidebar-line right-line"></div>
+        <div className="main-content">
+          <div className="top-actions">
+            <img src={editIcon} alt="Edit" className="icon-btn" />
+            <img src={assign} alt="Add User" className="icon-btn" />
+            <img src={deleteIcon} alt="Delete" className="icon-btn" />
+          </div>
+          <div className="empty-task">
+            <img src={taskIcon} alt="Tasks" className="task-icon" />
+            <h4>No task yet</h4>
+            <p>create and assign people to keep on track</p>
+            <button className="create-btn">Create task</button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 
   const renderProjectsView = () => (

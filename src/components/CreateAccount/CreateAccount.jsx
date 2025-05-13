@@ -2,29 +2,30 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import './CreateAccount.css';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import Hands from '../../assets/Hands.jpg';
 import backArrow from '../../assets/left-arrow.png';
 import working from '../../assets/working.png';
 import talent from '../../assets/talent.png';
 import profileIcon from '../../assets/user-avatar.png';
-import GraphicandDesign from '../../assets/Graphic and Design.jpg'
+import GraphicandDesign from '../../assets/Graphic and Design.jpg';
 import graphicDesign from '../../assets/graphic-design.png';
 import writing from '../../assets/writing.png';
 import translation from '../../assets/translation.png';
 import digitalMarketing from '../../assets/social-media-marketing.png';
+import logodesign from '../../assets/logodesign.png';
+import tshirtdesign from '../../assets/tshirt.png';
+import infographicdesign from '../../assets/infographics.png';
+import blog from '../../assets/blog.png';
 
 const categories = [
-  {
-    name: 'Graphic Design',
-    icon: graphicDesign,
-    submenu: ['Logo design', 'T-shirt design', 'Infographic design'],
-  },
-  {
-    name: 'Writing',
-    icon: writing,
-    submenu: ['Blog Writer', 'Scriptwriter', 'Copywriter'],
-  },
+  { name: 'Graphic Design', icon: graphicDesign },
+  { name: 'Logo Design', icon: logodesign },
+  { name: 'T-shirt Design', icon: tshirtdesign },
+  { name: 'Infographic Design', icon: infographicdesign },
+  { name: 'Writing', icon: writing },
+  { name: 'Blog Writer', icon: blog },
   {
     name: 'Translation & Editing',
     icon: translation,
@@ -45,14 +46,24 @@ const CreateAccount = () => {
   const [step, setStep] = useState('create');
   const [birthDate, setBirthDate] = useState('');
   const [selected, setSelected] = useState([]);
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const submenuRef = useRef(null);
+  const scrollRef = useRef(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const itemsPerPage = 7;
+  const itemWidth = 120; // approximate width per item incl. margin
+  const maxPage = Math.floor(categories.length / itemsPerPage);
 
   const [experiences, setExperiences] = useState([
-    { title: '', company: '', startDate: '', endDate: '' },
+    { title: '', company: '', DateHired: '', DateEnded: '' },
   ]);
+
+  const visibleCategories = categories.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
@@ -63,13 +74,32 @@ const CreateAccount = () => {
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const handleBackClick = () => {
-    if (step === 'experience') setStep('skills');
-    else if (step === 'skills') setStep('birthdate');
-    else if (step === 'birthdate') setStep('about');
+    if (step === 'job-dashboard') setStep('about');
     else if (step === 'about') setStep('profile');
     else if (step === 'profile') setStep('joinAs');
     else if (step === 'joinAs') setStep('create');
     else navigate('/');
+  };
+
+  const scrollToPage = (page) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: page * itemsPerPage * itemWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const scrollLeft = () => {
+    const newPage = Math.max(currentPage - 1, 0);
+    setCurrentPage(newPage);
+    scrollToPage(newPage);
+  };
+
+  const scrollRight = () => {
+    const newPage = Math.min(currentPage + 1, maxPage);
+    setCurrentPage(newPage);
+    scrollToPage(newPage);
   };
 
   const handleChange = (index, field, value) => {
@@ -79,7 +109,7 @@ const CreateAccount = () => {
   };
 
   const addExperience = () => {
-    setExperiences([...experiences, { title: '', company: '', startDate: '', endDate: '' }]);
+    setExperiences([...experiences, { title: '', company: '', DateHired: '', DateEnded: '' }]);
   };
 
   const removeExperience = (indexToRemove) => {
@@ -97,18 +127,9 @@ const CreateAccount = () => {
     );
   };
 
-  const handleCategoryClick = (categoryName) => {
-    setActiveSubmenu(activeSubmenu === categoryName ? null : categoryName);
-  };
-
-  const handleSubmenuItemClick = (item) => {
-    toggleSkill(item);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (submenuRef.current && !submenuRef.current.contains(event.target)) {
-        setActiveSubmenu(null);
       }
     };
 
@@ -247,95 +268,70 @@ const CreateAccount = () => {
         </div>
       )}
 
-      {/* ABOUT STEP */}
-      {step === 'about' && (
-        <div className="about-container">
-          <h2 className="form-title">Tell us about yourself</h2>
+          {/* ABOUT STEP */}
+          {step === 'about' && (
+            <div className="about-container">
+              <h2 className="form-title">Tell us about yourself</h2>
 
-          <label className="form-label">What do you do?</label>
-          <textarea className="form-textarea" placeholder="e.g. Data Scientist" rows={2} />
+              <label className="form-label">What do you do?</label>
+              <textarea className="form-textarea" placeholder="e.g. Data Scientist" rows={2} />
 
-          <label className="form-label">Describe yourself</label>
-          <textarea
-            className="form-textarea1"
-            placeholder="Describe your top skills, strengths, and experiences"
-            rows={4}
-          />
+              <label className="form-label">Describe yourself</label>
+              <textarea
+                className="form-textarea1"
+                placeholder="Describe your top skills, strengths, and experiences"
+                rows={4}
+              />
 
-          <div className="buttons">
-            <button className="bck-button" onClick={handleBackClick}>Back</button>
-            <button className="nxt-button" onClick={() => setStep('birthdate')}>Next</button>
-          </div>
-        </div>
-      )}
+              <h2 className="birth-header">Birthday</h2>
+              <p className="birth-description">
+                To use Freelancer, you must be 16 years of age or older...
+              </p>
 
-      {/* BIRTHDATE STEP */}
-      {step === 'birthdate' && (
-        <div className="birth-container">
-          <h2 className="birth-header">When were you born?</h2>
-          <p className="birth-description">
-            To use Freelancer, you must be 16 years of age or older...
-          </p>
-
-          <div className="input-wrapper">
-            <input
-              type="date"
-              className="birth-input"
-              value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
-            />
-          </div>
-
-          <div className="button-rows">
-            <button className="bck-button" onClick={handleBackClick}>Back</button>
-            <button className="nxt-button" onClick={() => setStep('skills')}>Next</button>
-          </div>
-        </div>
-      )}
-
-      {/* SKILLS STEP */}
-      {step === 'skills' && (
-        <div className="skills-container">
-          <h2>Tell us your skills</h2>
-          <p className="subtitle">This helps us recommend jobs for you.</p>
-
-          <div className="category-box-container">
-            <div className="category-box">
-              <h3 className="category-title">Category</h3>
-              <div className="category-items-wrapper">
-                {categories.map((cat) => (
-                  <div
-                    key={cat.name}
-                    className={`category-item ${selected.includes(cat.name) ? 'selected' : ''}`}
-                    onClick={() => handleCategoryClick(cat.name)}
-                    style={{ position: 'relative' }}
-                  >
-                    {activeSubmenu === cat.name && (
-                      <div className="submenu submenu-above" ref={submenuRef}>
-                        {cat.submenu.map((item) => (
-                          <div
-                            key={item}
-                            className={`submenu-item ${selected.includes(item) ? 'selected-item' : ''}`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSubmenuItemClick(item);
-                            }}
-                          >
-                            {item}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="icon">
-                      <img src={cat.icon} alt={cat.name} />
-                    </div>
-                    <div className="label">{cat.name}</div>
-                  </div>
-                ))}
+              <div className="input-wrapper">
+                <input
+                  type="date"
+                  className="birth-input"
+                  value={birthDate}
+                  onChange={(e) => setBirthDate(e.target.value)}
+                />
               </div>
-            </div>
-          </div>
+
+              <h2>Tell us your skills</h2>
+              <p className="subtitle">This helps us recommend jobs for you.</p>
+
+              
+              <div className="category-box-container">
+                <div className="category-box">
+                  <h3 className="category-title">Category</h3>
+                  <div className="category-scroll-wrapper">
+                    {currentPage > 0 && (
+                      <button className="scroll-arrow left" onClick={scrollLeft}>
+                        <ChevronLeft />
+                      </button>
+                    )}
+                    <div className="category-items-wrapper">
+                      {visibleCategories.map((cat) => (
+                        <div
+                          key={cat.name}
+                          className={`category-item ${selected.includes(cat.name) ? 'selected' : ''}`}
+                          onClick={() => toggleSkill(cat.name)}
+                        >
+                          <div className="icon">
+                            <img src={cat.icon} alt={cat.name} />
+                          </div>
+                          <div className="label">{cat.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                    {currentPage < maxPage && (
+                      <button className="scroll-arrow right" onClick={scrollRight}>
+                        <ChevronRight />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
 
           <div className="selected-skills-box">
             <div className="skills-selected-count">{selected.length} skills selected</div>
@@ -353,22 +349,13 @@ const CreateAccount = () => {
             )}
           </div>
 
-          <div className="button-row">
-            <button className="bck-button" onClick={handleBackClick}>Back</button>
-            <button className="nxt-button" onClick={() => setStep('experience')}>Next</button>
-          </div>
-        </div>
-      )}
-
-      {/* EXPERIENCE STEP */}
-      {step === 'experience' && (
-        <div className="experience-container">
           <div className="experience-header-block">
-            <h2 className="experience-header">Add Experience</h2>
-            <p className="experience-subtitle">Add Work Experience</p>
-          </div>
+          <h2 className="experience-header">Add Experience</h2>
+          <p className="experience-subtitle">Add Work Experience</p>
+         </div>
 
-          <div className="experience-scrollable">
+          
+          <div className="experience-container">
             {experiences.map((exp, index) => (
               <div key={index}>
                 <div className="experience-row">
@@ -385,21 +372,21 @@ const CreateAccount = () => {
                     onChange={(e) => handleChange(index, 'company', e.target.value)}
                   />
                   <div className="date-wrapper">
-                    <label htmlFor={`startDate-${index}`} className="date-label">Start Date</label>
+                    <label htmlFor={`DateHired-${index}`} className="date-label">Date Hired</label>
                     <input
-                      id={`startDate-${index}`}
+                      id={`DateHired-${index}`}
                       type="date"
-                      value={exp.startDate}
-                      onChange={(e) => handleChange(index, 'startDate', e.target.value)}
+                      value={exp.DateHired}
+                      onChange={(e) => handleChange(index, 'DateHired', e.target.value)}
                     />
                   </div>
                   <div className="date-wrapper">
-                    <label htmlFor={`endDate-${index}`} className="date-label">End Date</label>
+                    <label htmlFor={`DateEnded-${index}`} className="date-label">Date Ended</label>
                     <input
-                      id={`endDate-${index}`}
+                      id={`DateEnded-${index}`}
                       type="date"
                       value={exp.endDate}
-                      onChange={(e) => handleChange(index, 'endDate', e.target.value)}
+                      onChange={(e) => handleChange(index, 'DateEnded', e.target.value)}
                     />
                   </div>
                 </div>

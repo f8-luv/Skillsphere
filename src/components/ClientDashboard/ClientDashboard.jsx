@@ -49,7 +49,7 @@ const JobDashboard = () => {
 
   const renderDashboardView = () => (
     <div className="container">
-      <div className="card">
+      <div className="cards">
         <img src={contact} alt="Janice Virtudazo Conde" className="profile-pc" />
         <div className="card-content">
           <h2>Janice Virtudazo Conde</h2>
@@ -66,7 +66,7 @@ const JobDashboard = () => {
         </div>
       </div>
 
-      <div className="card">
+      <div className="cards">
         <img src={contact} alt="Francine Malagum" className="profile-pc" />
         <div className="card-content">
           <h2>Francine Malagum</h2>
